@@ -18,18 +18,19 @@ function succeed(item) {
 
 function fail(item) {
   const { enhancement: oldEnhancement, durability: oldDurability } = item
-  let newItem = {}
-  if (oldEnhancement < 15) {
-    newItem = { ...item, durability: oldDurability - 5 };
-  }
-
-  if (oldEnhancement >= 15) {
-    newItem = { ...item, durability: oldDurability - 10 };
-  }
 
   if (oldEnhancement > 16) {
-    newItem = { ...newItem, enhancement: oldEnhancement - 1 };
+    return { ...item, enhancement: oldEnhancement - 1 };
   }
+
+  else if (oldEnhancement < 15) {
+    return { ...item, durability: oldDurability - 5 };
+  }
+
+  else if (oldEnhancement >= 15) {
+    return { ...item, durability: oldDurability - 10 };
+  }
+
   return newItem
 }
 
